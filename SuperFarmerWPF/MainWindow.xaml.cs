@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperFarmerWPF.views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace SuperFarmerWPF
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new WellcomePageView();
+        }
+
+        private void BtnClickStartGamePg(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new GamePageView();
+        }
+        private void BtnClickWellcomePg(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new WellcomePageView();
         }
     }
 }

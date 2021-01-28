@@ -6,4 +6,23 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="resources\BigDog.png" />
+    <None Remove="resources\SmallDog.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\BigDog.png" />
+    <Resource Include="resources\bunny.png" />
+    <Resource Include="resources\cow.png" />
+    <Resource Include="resources\GameBackGround.png" />
+    <Resource Include="resources\sheep.png" />
+    <Resource Include="resources\SmallDog.png" />
+    <Resource Include="resources\Super-Farmer-BackGround.png" />
+    <Resource Include="resources\horse.png" />
+    <Resource Include="resources\left rules.png" />
+    <Resource Include="resources\pig.png" />
+    <Resource Include="resources\right rules.png" />
+  </ItemGroup>
+
 </Project>
