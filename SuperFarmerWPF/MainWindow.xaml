@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperFarmerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="540" Width="960" ResizeMode="CanResize"
-        MinHeight="200" MinWidth="300">
+        Title="MainWindow" ResizeMode="CanResize" MinHeight="540" MinWidth="960">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
