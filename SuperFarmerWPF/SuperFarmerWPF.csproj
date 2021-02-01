@@ -7,22 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resources\BigDog.png" />
-    <None Remove="resources\SmallDog.png" />
+    <None Remove="Resources\BigDog.png" />
+    <None Remove="Resources\SmallDog.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="resources\BigDog.png" />
-    <Resource Include="resources\bunny.png" />
-    <Resource Include="resources\cow.png" />
-    <Resource Include="resources\GameBackGround.png" />
-    <Resource Include="resources\sheep.png" />
-    <Resource Include="resources\SmallDog.png" />
-    <Resource Include="resources\Super-Farmer-BackGround.png" />
-    <Resource Include="resources\horse.png" />
-    <Resource Include="resources\left rules.png" />
-    <Resource Include="resources\pig.png" />
-    <Resource Include="resources\right rules.png" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperFarmer\SuperFarmer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\BigDog.png" />
+    <Resource Include="Resources\bunny.png" />
+    <Resource Include="Resources\cow.png" />
+    <Resource Include="Resources\GameBackGround.png" />
+    <Resource Include="Resources\sheep.png" />
+    <Resource Include="Resources\SmallDog.png" />
+    <Resource Include="Resources\Super-Farmer-BackGround.png" />
+    <Resource Include="Resources\horse.png" />
+    <Resource Include="Resources\left rules.png" />
+    <Resource Include="Resources\pig.png" />
+    <Resource Include="Resources\right rules.png" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperFarmerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" ResizeMode="CanResize" MinHeight="540" MinWidth="960">
+        Title="MainWindow" ResizeMode="CanResize" MinHeight="540" MinWidth="860">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,11 +14,11 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" Margin="2,2,2,2">
+        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" Margin="12,2,2,2">
             <Button Content="Main Window" Width="auto"  Click="BtnClickWellcomePg" Style="{StaticResource ButtonStyle}" />
             <Button Content="Game page" Width="auto" Click="BtnClickStartGamePg" Style="{StaticResource ButtonStyle}" />
         </StackPanel>
-        <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,40,0,0" BorderBrush="Black" BorderThickness="2"/>
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,40,0,0" BorderBrush="Black" BorderThickness="10,0,10,10"/>
     </Grid>
     
 

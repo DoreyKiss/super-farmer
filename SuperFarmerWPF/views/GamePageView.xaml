@@ -36,16 +36,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Image Source="..\resources\bunny.png" Grid.Row="1" Grid.Column="2" Width="50"  />
-        <Image Grid.Row="2" Grid.Column="2" Width="50">
+        <Image Source="..\resources\bunny.png" Grid.Row="1" Grid.Column="2" Style="{StaticResource ImageStyle}"  />
+        <Image Grid.Row="2" Grid.Column="2" Width="50" Style="{StaticResource ImageStyle}">
             <Image.Source>
                 <FormatConvertedBitmap Source="..\resources\sheep.png" DestinationFormat='Gray4' />
             </Image.Source>
-            <Image.Clip>
-                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
-            </Image.Clip>
         </Image>
-        <Image Grid.Row="3" Grid.Column="2" Style="{StaticResource pigStyle}"/>
+        <Image Grid.Row="3" Grid.Column="2" Style="{StaticResource PigStyle}"/>
     </Grid>
 
 
