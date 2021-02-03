@@ -6,14 +6,14 @@ namespace SuperFarmer.DataModell
 {
     public enum AnimalEnum
     {
-        bunny,
-        sheep,
-        pig,
-        cow,
-        horse,
-        smallDog,
-        bigDog,
-        fox,
-        wolf
+        Bunny,
+        Sheep,
+        Pig,
+        Cow,
+        Horse,
+        SmallDog,
+        BigDog,
+        Fox,
+        Wolf
     }
 }

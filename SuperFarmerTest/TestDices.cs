@@ -6,11 +6,11 @@ namespace SuperFarmerTest
 {
     public class TestDices
     {
-        private AnimalEnum[] _reddice = { AnimalEnum.smallDog,
-            AnimalEnum.bigDog, AnimalEnum.fox, AnimalEnum.horse };
+        private AnimalEnum[] _reddice = { AnimalEnum.SmallDog,
+            AnimalEnum.BigDog, AnimalEnum.Fox, AnimalEnum.Horse };
 
-        private AnimalEnum[] _bluedice = { AnimalEnum.smallDog,
-            AnimalEnum.bigDog, AnimalEnum.cow, AnimalEnum.wolf };
+        private AnimalEnum[] _bluedice = { AnimalEnum.SmallDog,
+            AnimalEnum.BigDog, AnimalEnum.Cow, AnimalEnum.Wolf };
 
         [Test]
         public void Test1()

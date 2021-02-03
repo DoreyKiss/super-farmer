@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SuperFarmer.PlayArea
+using SuperFarmer.PlayArea;
 
 namespace SuperFarmerWPF
 {
@@ -23,7 +23,7 @@ namespace SuperFarmerWPF
     public partial class MainWindow : Window
     {
 
-        private GameContext game;
+        private GameContext Game;
 
         public MainWindow()
         {

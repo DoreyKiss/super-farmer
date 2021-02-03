@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SuperFarmer.DataModell
 {
-    public class BlueDice: IDice
+    public class BlueDice: AbstractDice
     {
-        private readonly List<AnimalEnum> DiceValues = new List<AnimalEnum>()
-                {AnimalEnum.fox, AnimalEnum.pig, AnimalEnum.sheep,
-                AnimalEnum.bunny, AnimalEnum.bunny, AnimalEnum.bunny,
-                AnimalEnum.horse, AnimalEnum.pig, AnimalEnum.sheep,
-                AnimalEnum.bunny, AnimalEnum.bunny, AnimalEnum.bunny };
-
-        public AnimalEnum ThrowDice()
+        public override List<AnimalEnum> DiceValues
         {
-            Random rnd = new Random();
-            return DiceValues[rnd.Next(0, 11)];
+            get {return _diceValues ;}
         }
+
+        private readonly List<AnimalEnum> _diceValues = new List<AnimalEnum>()
+                {AnimalEnum.Fox, AnimalEnum.Pig, AnimalEnum.Sheep,
+                AnimalEnum.Bunny, AnimalEnum.Bunny, AnimalEnum.Bunny,
+                AnimalEnum.Horse, AnimalEnum.Pig, AnimalEnum.Sheep,
+                AnimalEnum.Bunny, AnimalEnum.Bunny, AnimalEnum.Bunny };
+
     }
 }

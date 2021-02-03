@@ -6,11 +6,12 @@ namespace SuperFarmer.DataModell
 {
     internal class Player
     {
-        public int PlayerID { get; private set; }
+        public Guid PlayerID { get; private set; }
 
-        public Hand _curretHand;
+        public Hand _curretHand { get; private set; }
         public Player()
         {
+            PlayerID = new Guid();
         }
     }
 }

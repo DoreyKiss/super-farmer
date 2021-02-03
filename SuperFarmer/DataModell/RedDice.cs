@@ -4,19 +4,17 @@ using System.Text;
 
 namespace SuperFarmer.DataModell
 {
-    internal class RedDice : IDice
+    internal class RedDice : AbstractDice
     {
-        private readonly List<AnimalEnum> DiceValues = new List<AnimalEnum>()
-                {AnimalEnum.cow, AnimalEnum.pig, AnimalEnum.sheep,
-                AnimalEnum.bunny, AnimalEnum.bunny, AnimalEnum.bunny,
-                AnimalEnum.wolf, AnimalEnum.sheep, AnimalEnum.sheep,
-                AnimalEnum.bunny, AnimalEnum.bunny, AnimalEnum.bunny };
-
-        public AnimalEnum ThrowDice()
+        public override List<AnimalEnum> DiceValues
         {
-            Random rnd = new Random();
-            return DiceValues[rnd.Next(0, 11)];
+            get { return _diceValues; }
         }
+        private readonly List<AnimalEnum> _diceValues = new List<AnimalEnum>()
+                {AnimalEnum.Cow, AnimalEnum.Pig, AnimalEnum.Sheep,
+                AnimalEnum.Bunny, AnimalEnum.Bunny, AnimalEnum.Bunny,
+                AnimalEnum.Wolf, AnimalEnum.Sheep, AnimalEnum.Sheep,
+                AnimalEnum.Bunny, AnimalEnum.Bunny, AnimalEnum.Bunny };
     }
 
 }
