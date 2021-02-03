@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SuperFarmerWPF\SuperFarmerWPF.csproj" />
+    <ProjectReference Include="..\SuperFarmerWPF\SuperFarmer.WPF.csproj" />
     <ProjectReference Include="..\SuperFarmer\SuperFarmer.csproj" />
   </ItemGroup>
 

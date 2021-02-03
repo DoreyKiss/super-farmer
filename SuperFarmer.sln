@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFarmerWPF", "SuperFarmerWPF\SuperFarmerWPF.csproj", "{4E0418FC-8F8D-42C7-A454-ACE93602199B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFarmer.WPF", "SuperFarmerWPF\SuperFarmer.WPF.csproj", "{4E0418FC-8F8D-42C7-A454-ACE93602199B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFarmer", "SuperFarmer\SuperFarmer.csproj", "{E7F47993-A2AF-4479-8F6C-BD84D94A27C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperFarmerTest", "SuperFarmerTest\SuperFarmerTest.csproj", "{1F3C2685-17B9-4515-8A36-E61AAC0D29E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFarmerTest", "SuperFarmerTest\SuperFarmerTest.csproj", "{1F3C2685-17B9-4515-8A36-E61AAC0D29E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

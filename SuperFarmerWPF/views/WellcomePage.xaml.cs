@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SuperFarmerWPF.views
+namespace SuperFarmer.WPF.views
 {
     /// <summary>
     /// Interaction logic for WellcomePageView.xaml

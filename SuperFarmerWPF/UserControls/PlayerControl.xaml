@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="SuperFarmerWPF.UserControls.PlayerControl"
+﻿<UserControl x:Class="SuperFarmer.WPF.UserControls.PlayerControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SuperFarmerWPF.UserControls"
+             xmlns:local="clr-namespace:SuperFarmer.WPF.UserControls"
              mc:Ignorable="d" Height="auto">
     <UserControl.Background>
         <ImageBrush ImageSource="..\resources\Usercontrolbackground.png" Stretch="Fill" />
@@ -38,7 +38,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="9" Style="{StaticResource TexboxStyle}"/>
         <Image Grid.Row="1" Grid.Column="2" Source="..\resources\bunny.png"  Style="{StaticResource ImageStyle}"  />
         
         <TextBox Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>

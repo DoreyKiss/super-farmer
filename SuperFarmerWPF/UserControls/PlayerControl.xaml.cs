@@ -11,13 +11,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SuperFarmerWPF.UserControls
+namespace SuperFarmer.WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for PlayerControl.xaml
     /// </summary>
     public partial class PlayerControl : UserControl
     {
+        
+
         public PlayerControl()
         {
             InitializeComponent();

@@ -1,4 +1,4 @@
-﻿using SuperFarmerWPF.views;
+﻿using SuperFarmer.WPF.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SuperFarmer.PlayArea;
 
-namespace SuperFarmerWPF
+namespace SuperFarmer.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +23,7 @@ namespace SuperFarmerWPF
     public partial class MainWindow : Window
     {
 
-        //private GameContext Game;
+        private GameContext Game;
 
         public MainWindow()
         {
