@@ -12,6 +12,7 @@ namespace SuperFarmer.DataModell
         public Player()
         {
             PlayerID = new Guid();
+            _curretHand = new Hand();
         }
     }
 }

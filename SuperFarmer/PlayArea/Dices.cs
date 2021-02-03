@@ -12,7 +12,7 @@ namespace SuperFarmer.PlayArea
             RedDice rd = new RedDice();
             BlueDice bd = new BlueDice();
             return (rd.ThrowDice() , bd.ThrowDice()); ;
-            //var (blue, red) = Dice.RolDIce()
+            //var (blue, red) = Dice.RolDice()
         }
     }
 }

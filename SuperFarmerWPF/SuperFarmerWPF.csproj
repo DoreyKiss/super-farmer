@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Resources\BigDog.png" />
     <None Remove="Resources\SmallDog.png" />
+    <None Remove="Resources\Usercontrolbackground.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +32,7 @@
     <Resource Include="Resources\left rules.png" />
     <Resource Include="Resources\pig.png" />
     <Resource Include="Resources\right rules.png" />
+    <Resource Include="Resources\Usercontrolbackground.png" />
   </ItemGroup>
 
 </Project>

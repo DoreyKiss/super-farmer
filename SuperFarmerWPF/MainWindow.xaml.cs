@@ -23,7 +23,7 @@ namespace SuperFarmerWPF
     public partial class MainWindow : Window
     {
 
-        private GameContext Game;
+        //private GameContext Game;
 
         public MainWindow()
         {

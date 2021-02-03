@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:SuperFarmerWPF.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
@@ -17,33 +18,9 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
-        <Image Source="..\resources\bunny.png" Grid.Row="1" Grid.Column="2" Style="{StaticResource ImageStyle}"  />
-        <Image Grid.Row="2" Grid.Column="2" Width="50" Style="{StaticResource ImageStyle}">
-            <Image.Source>
-                <FormatConvertedBitmap Source="..\resources\sheep.png" DestinationFormat='Gray4' />
-            </Image.Source>
-        </Image>
-        <Image Grid.Row="3" Grid.Column="2" Style="{StaticResource PigStyle}"/>
-    </Grid>
 
+    <DockPanel>
+        <local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>
+    </DockPanel>
 
 </Page>

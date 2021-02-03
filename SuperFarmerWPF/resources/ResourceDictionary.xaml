@@ -3,17 +3,17 @@
 
 
     <Style TargetType="{x:Type Image}" x:Key="ImageStyle">
-        <Setter Property="Width" Value="50" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Margin" Value="0,2,0,2" />
         <Setter Property="Clip">
             <Setter.Value>
-                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
+                <EllipseGeometry Center="15,15" RadiusX="15" RadiusY="15" />
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style TargetType="{x:Type Image}" x:Key="PigStyle"
           BasedOn="{StaticResource ImageStyle}">
-        <Setter Property="Width" Value="50" />
         <Setter Property="Source">
             <Setter.Value>
                 <FormatConvertedBitmap Source="..\resources\pig.png"  DestinationFormat='Gray4' />
@@ -52,5 +52,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="TexboxStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
     </Style>
 </ResourceDictionary>
