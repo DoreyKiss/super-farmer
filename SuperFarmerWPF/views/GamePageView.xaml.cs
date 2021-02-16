@@ -35,6 +35,7 @@ namespace SuperFarmer.WPF.views
             blueDice = new BlueDice();
             redDice = new RedDice();
         }
+
         public GamePageView( GameGod _gameGod, MainViewModel viewModel, IDice _redDice, IDice _blueDice)
         {
             gameGod = _gameGod;
@@ -45,13 +46,29 @@ namespace SuperFarmer.WPF.views
             redDice = (RedDice)_redDice;
         }
 
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Throw_Dice_Click(object sender, RoutedEventArgs e)
         {
             var (blue, red) = gameGod.ThrowDice(blueDice, redDice);
             gameViewModel.BlueDice = blue;
             gameViewModel.RedDice = red;
-            
+            UpdatePLayerValues();
+        }
+
+        private void Change_PLayer_Click(object sender, RoutedEventArgs e)
+        {
+            gameViewModel.CurrentPLayerIndex = gameGod.ChangePLayer();
+            UpdatePLayerValues();
+        }
+
+        private void UpdatePLayerValues()
+        {
+            gameViewModel.NumberOfCurrentPlayersBunnies = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.Bunny;
+            gameViewModel.NumberOfCurrentPlayersSheeps = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.Sheep;
+            gameViewModel.NumberOfCurrentPlayersPigs = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.Pig;
+            gameViewModel.NumberOfCurrentPlayersCows = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.Cow;
+            gameViewModel.NumberOfCurrentPlayersHorses = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.Horse;
+            gameViewModel.NumberOfCurrentPlayersSmallDogs = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.SmallDog;
+            gameViewModel.NumberOfCurrentPlayersBigDogs = gameGod.Players[gameViewModel.CurrentPLayerIndex]._curretHand.BigDog;
         }
     }
 }

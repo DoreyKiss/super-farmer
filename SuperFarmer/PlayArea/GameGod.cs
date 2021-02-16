@@ -32,11 +32,12 @@ namespace SuperFarmer.PlayArea
             var red = redDice.ThrowDice();
             resultHandler.GetResult(Players[currentPLayer], blue , red);
             return (blue, red);
+
         }
 
-        public void ChangePLayer()
+        public int ChangePLayer()
         {
-            currentPLayer = (currentPLayer + 1) % playerNumberSum; // CHANGE PLAYER 
+           return currentPLayer = (currentPLayer + 1) % playerNumberSum; // CHANGE PLAYER 
         }
     }
 }

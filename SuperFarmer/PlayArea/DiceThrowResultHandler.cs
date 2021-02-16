@@ -27,11 +27,11 @@ namespace SuperFarmer.PlayArea
             {
                 if (player._curretHand.SmallDog != 0)
                 {
-                    player._curretHand.LoseAnimalAll(IHand.HandEnum.SmallDog);
+                    player._curretHand.LoseAnimal(IHand.HandEnum.SmallDog, 1);
                 }
                 else
                 {
-                    WolfAttack(player);
+                    player._curretHand.LoseAnimalAll(IHand.HandEnum.Bunny);
                 }
 
             }
@@ -44,19 +44,19 @@ namespace SuperFarmer.PlayArea
                 if (player._curretHand.BigDog != 0)
                 {
                     //todo lose only one dog
-                    player._curretHand.LoseAnimal(IHand.HandEnum.SmallDog, 1);
+                    player._curretHand.LoseAnimal(IHand.HandEnum.BigDog, 1);
                 }
                 else
                 {
-                    player._curretHand.LoseAnimalAll(IHand.HandEnum.Bunny);
+                    WolfAttack(player);
                 }
             }
-
+            
             var tempRed = player._curretHand.GetAnimal((IHand.HandEnum)red);
-            player._curretHand.AddAnimal((IHand.HandEnum)red, (tempRed + 2) / 2);
+            player._curretHand.AddAnimal((IHand.HandEnum)red, (tempRed + 1) / 2);
 
             var tempBlue = player._curretHand.GetAnimal((IHand.HandEnum)blue);
-            player._curretHand.AddAnimal((IHand.HandEnum)blue, (tempBlue + 2) / 2);
+            player._curretHand.AddAnimal((IHand.HandEnum)blue, (tempBlue + 1) / 2);
             return;
         }
 

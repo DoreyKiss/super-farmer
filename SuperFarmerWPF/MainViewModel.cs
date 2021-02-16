@@ -55,5 +55,96 @@ namespace SuperFarmer.WPF
                 OnPropertyChanged(nameof(RedDice));
             }
         }
+
+        private int _CurrentPLayerIndex;
+
+        public int CurrentPLayerIndex
+        {
+            get { return _CurrentPLayerIndex; }
+            set
+            {
+                _CurrentPLayerIndex = value;
+                OnPropertyChanged(nameof(CurrentPLayerIndex));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersBunnies;
+
+
+        public int NumberOfCurrentPlayersBunnies
+        {
+            get { return _NumberOfCurrentPlayersBunnies; }
+            set
+            {
+                _NumberOfCurrentPlayersBunnies = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersBunnies));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersSheeps;
+        public int NumberOfCurrentPlayersSheeps
+        {
+            get { return _NumberOfCurrentPlayersSheeps; }
+            set
+            {
+                _NumberOfCurrentPlayersSheeps = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersSheeps));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersPigs;
+        public int NumberOfCurrentPlayersPigs
+        {
+            get { return _NumberOfCurrentPlayersPigs; }
+            set
+            {
+                _NumberOfCurrentPlayersPigs = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersPigs));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersCows;
+        public int NumberOfCurrentPlayersCows
+        {
+            get { return _NumberOfCurrentPlayersCows; }
+            set
+            {
+                _NumberOfCurrentPlayersCows = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersCows));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersHorses;
+        public int NumberOfCurrentPlayersHorses
+        {
+            get { return _NumberOfCurrentPlayersHorses; }
+            set
+            {
+                _NumberOfCurrentPlayersHorses = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersHorses));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersSmallDogs;
+        public int NumberOfCurrentPlayersSmallDogs
+        {
+            get { return _NumberOfCurrentPlayersSmallDogs; }
+            set
+            {
+                _NumberOfCurrentPlayersSmallDogs = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersSmallDogs));
+            }
+        }
+
+        private int _NumberOfCurrentPlayersBigDogs;
+        public int NumberOfCurrentPlayersBigDogs
+        {
+            get { return _NumberOfCurrentPlayersBigDogs; }
+            set
+            {
+                _NumberOfCurrentPlayersBigDogs = value;
+                OnPropertyChanged(nameof(NumberOfCurrentPlayersBigDogs));
+            }
+        }
     }
 }
