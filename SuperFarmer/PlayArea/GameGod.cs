@@ -13,10 +13,12 @@ namespace SuperFarmer.PlayArea
         private int currentPLayer;
         private int playerNumberSum;
         private DiceThrowResultHandler resultHandler = new DiceThrowResultHandler();
+        public CoinDeck deck;
 
         public void StartGame(int numberOfPLayers)
         {
             Players.Clear();
+            deck = new CoinDeck();
             for (int i = 0; i < numberOfPLayers; i++)
             {
                 Players.Add(new Player(new Hand()));
@@ -30,7 +32,7 @@ namespace SuperFarmer.PlayArea
 
             var blue = blueDice.ThrowDice();
             var red = redDice.ThrowDice();
-            resultHandler.GetResult(Players[currentPLayer], blue , red);
+            resultHandler.GetResult(Players[currentPLayer], blue , red, deck);
             return (blue, red);
 
         }
