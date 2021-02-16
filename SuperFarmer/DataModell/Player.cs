@@ -4,15 +4,15 @@ using System.Text;
 
 namespace SuperFarmer.DataModell
 {
-    internal class Player
+    public class Player
     {
         public Guid PlayerID { get; private set; }
 
-        public Hand _curretHand { get; private set; }
-        public Player()
+        public IHand _curretHand { get; private set; }
+        public Player(IHand hand)
         {
             PlayerID = new Guid();
-            _curretHand = new Hand();
+            _curretHand = hand;
         }
     }
 }

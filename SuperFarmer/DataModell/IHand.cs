@@ -6,18 +6,36 @@ namespace SuperFarmer.DataModell
 {
     public interface IHand
     {
-        public int Bunny { get; set; }
+        public enum HandEnum{
+            Bunny = AnimalEnum.Bunny,
+            Sheep = AnimalEnum.Sheep,
+            Pig = AnimalEnum.Pig,
+            Cow = AnimalEnum.Cow,
+            Horse = AnimalEnum.Horse,
+            SmallDog = AnimalEnum.SmallDog,
+            BigDog = AnimalEnum.BigDog,
+        }
 
-        public int Sheep { get; set; }
+        public int Bunny { get;}
 
-        public int Pig { get; set; }
+        public int Sheep { get;}
 
-        public int Cow { get; set; }
+        public int Pig { get;}
 
-        public int Horse { get; set; }
+        public int Cow { get; }
 
-        public int SmallDog { get; set; }
+        public int Horse { get; }
 
-        public int BigDog { get; set; }
+        public int SmallDog { get; }
+
+        public int BigDog { get; }
+
+        public void AddAnimal(IHand.HandEnum key, int value);
+
+        public int GetAnimal(IHand.HandEnum key);
+
+        public void LoseAnimalAll(IHand.HandEnum key);
+        public void LoseAnimal(IHand.HandEnum key, int value);
+
     }
 }

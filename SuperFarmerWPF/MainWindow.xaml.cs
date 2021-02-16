@@ -1,4 +1,5 @@
-﻿using SuperFarmer.WPF.views;
+﻿using SuperFarmer.PlayArea;
+using SuperFarmer.WPF.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SuperFarmer.PlayArea;
 
 namespace SuperFarmer.WPF
 {
@@ -22,22 +22,27 @@ namespace SuperFarmer.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private GameContext Game;
+        private GameGod gameGod;
+        private MainViewModel gameViewModel;
 
         public MainWindow()
         {
+            gameViewModel = new MainViewModel();
+            gameGod = new GameGod();
             InitializeComponent();
-            Main.Content = new WellcomePageView();
+            Main.Content = new WellcomePageView(gameGod, gameViewModel);
         }
 
         private void BtnClickStartGamePg(object sender, RoutedEventArgs e)
         {
-            Main.Content = new GamePageView();
+
+            Main.Content = new GamePageView(gameGod, gameViewModel);
         }
         private void BtnClickWellcomePg(object sender, RoutedEventArgs e)
         {
-            Main.Content = new WellcomePageView();
+            Main.Content = new WellcomePageView(gameGod, gameViewModel);
         }
+        
+
     }
 }

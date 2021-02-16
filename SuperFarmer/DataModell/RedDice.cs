@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SuperFarmer.DataModell
 {
-    internal class RedDice : AbstractDice
+    public class RedDice : AbstractDice
     {
         public override List<AnimalEnum> DiceValues
         {

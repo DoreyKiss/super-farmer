@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SuperFarmer.WPF.UserControls"
-             mc:Ignorable="d" Height="auto">
+             mc:Ignorable="d" >
     <UserControl.Background>
         <ImageBrush ImageSource="..\resources\Usercontrolbackground.png" Stretch="Fill" />
     </UserControl.Background>
@@ -26,6 +26,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -38,7 +39,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="9" Style="{StaticResource TexboxStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="1" Style="{StaticResource TexboxStyle}"/>
         <Image Grid.Row="1" Grid.Column="2" Source="..\resources\bunny.png"  Style="{StaticResource ImageStyle}"  />
         
         <TextBox Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
@@ -59,8 +60,6 @@
         <TextBox Grid.Row="3" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
         <Image Grid.Row="3" Grid.Column="5" Source="..\resources\bigdog.png" Style="{StaticResource ImageStyle}" />
 
-        <Button Style="{StaticResource ButtonStyle}" Grid.Column="7" Grid.Row="4" Content="Dice" >
-            
-        </Button>
+           
     </Grid>
 </UserControl>

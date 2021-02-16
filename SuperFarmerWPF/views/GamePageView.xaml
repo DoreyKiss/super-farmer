@@ -19,8 +19,78 @@
     </Page.Resources>
 
 
-    <DockPanel>
-        <local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>
-    </DockPanel>
+    <StackPanel Orientation="Horizontal">
+
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource TexBlockStyle}" Text="Number of Players in Game:" Grid.Column="2" Grid.Row="2"/>
+            <TextBlock Style="{StaticResource TexBlockStyle}" Text="{Binding NumberOfPlayers}" Grid.Column="2" Grid.Row="3"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="1" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="1" Grid.Column="2" Source="..\resources\bunny.png"  Style="{StaticResource ImageStyle}"  />
+
+            <TextBox Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="2" Grid.Column="2" Source="..\resources\sheep.png" Style="{StaticResource ImageStyle}" />
+
+            <TextBox Grid.Row="3" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="3" Grid.Column="2"  Source="..\resources\pig.png" Style="{StaticResource ImageStyle}"/>
+
+            <TextBox Grid.Row="4" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="4" Grid.Column="2" Source="..\resources\cow.png" Style="{StaticResource ImageStyle}" />
+
+            <TextBox Grid.Row="1" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="1" Grid.Column="5" Source="..\resources\horse.png" Style="{StaticResource ImageStyle}" />
+
+            <TextBox Grid.Row="2" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="2" Grid.Column="5" Source="..\resources\smalldog.png" Style="{StaticResource ImageStyle}" />
+
+            <TextBox Grid.Row="3" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
+            <Image Grid.Row="3" Grid.Column="5" Source="..\resources\bigdog.png" Style="{StaticResource ImageStyle}" />
+
+
+            <Button Style="{StaticResource ButtonStyle}" Grid.Column="7" Grid.Row="1" Content=" Throw Dice:" Click="Button_Click_1" />
+            <TextBlock Grid.Row="2" Grid.Column="7"  Style="{StaticResource TexBlockStyle}" Text="{Binding BlueDice}" />
+            <TextBlock Grid.Row="2" Grid.Column="8"  Style="{StaticResource TexBlockStyle}" Text="{Binding RedDice}" />
+
+        </Grid>
+        <!--<local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>-->
+    </StackPanel>
 
 </Page>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SuperFarmer.DataModell
 {
-    internal interface IDice
+    public interface IDice
     {
         AnimalEnum ThrowDice();
     }

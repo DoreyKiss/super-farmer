@@ -22,11 +22,22 @@
 
 
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Margin="100,0,0,0" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource TexBlockStyle}" Text="Please select number of players" />
+            <ComboBox Style="{StaticResource ComboboxStyle}"
+                        SelectedIndex="{Binding NumberOfPlayers}" >
+                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" IsSelected="True" Content="1"></ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="2"></ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="3"></ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="4"></ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="5"></ComboBoxItem>
+            </ComboBox>
+
+            
             <Button Style="{StaticResource ButtonStyle}"
-                    Margin="100,0,0,0"
                     HorizontalContentAlignment="Center"                            
-                    VerticalContentAlignment="Center" FontSize="25">Start Game</Button>
+                    VerticalContentAlignment="Center" FontSize="25"
+                    Click="BtnClickStartGame">Start Game</Button>
         </StackPanel>
     </Grid>
 </Page>

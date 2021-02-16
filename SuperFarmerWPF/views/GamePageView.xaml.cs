@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SuperFarmer.DataModell;
+using SuperFarmer.PlayArea;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +20,38 @@ namespace SuperFarmer.WPF.views
     /// </summary>
     public partial class GamePageView : Page
     {
-        public GamePageView()
+        private GameGod gameGod;
+        private MainViewModel gameViewModel;
+        private BlueDice blueDice;
+        private RedDice redDice;
+
+
+        public GamePageView(GameGod _gameGod, MainViewModel viewModel)
         {
+            gameGod = _gameGod;
+            gameViewModel = viewModel;
             InitializeComponent();
+            DataContext = gameViewModel;
+            blueDice = new BlueDice();
+            redDice = new RedDice();
+        }
+        public GamePageView( GameGod _gameGod, MainViewModel viewModel, IDice _redDice, IDice _blueDice)
+        {
+            gameGod = _gameGod;
+            gameViewModel = viewModel;
+            InitializeComponent();
+            DataContext = gameViewModel;
+            blueDice = (BlueDice)_blueDice;
+            redDice = (RedDice)_redDice;
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var (blue, red) = gameGod.ThrowDice(blueDice, redDice);
+            gameViewModel.BlueDice = blue;
+            gameViewModel.RedDice = red;
+            
         }
     }
 }
