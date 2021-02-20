@@ -48,11 +48,45 @@
                             <Setter Property="Background" Value="OrangeRed" />
                             <Setter Property="Foreground" Value="White" />
                         </Trigger>
+
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="LightGray" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ExchangeCoins" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="IsEnabled" Value="False"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding  Path=GameStateEnum}" Value="0">
+                <Setter Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ThrowDiceButton" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="IsEnabled" Value="False"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding  Path=GameStateEnum}" Value="1">
+                <Setter Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ChangePlayerButtonStyle" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="IsEnabled" Value="False"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding  Path=GameStateEnum}" Value="2">
+                <Setter Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+   
 
     <Style TargetType="{x:Type TextBox}" x:Key="TexboxStyle">
         <Setter Property="Background" Value="Transparent"/>
@@ -105,9 +139,16 @@
     </Style>
 
 
-
     <Style TargetType="{x:Type ComboBox}" x:Key="ComboboxStyle">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}" x:Key="ComboboxItemContainerStyle" BasedOn="{StaticResource ComboboxStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding GameStateEnum}" Value="0">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

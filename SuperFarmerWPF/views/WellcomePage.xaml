@@ -33,7 +33,6 @@
                 <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="5"></ComboBoxItem>
             </ComboBox>
 
-            
             <Button Style="{StaticResource ButtonStyle}"
                     HorizontalContentAlignment="Center"                            
                     VerticalContentAlignment="Center" FontSize="25"

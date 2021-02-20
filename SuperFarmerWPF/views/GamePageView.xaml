@@ -91,15 +91,23 @@
         
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Vertical" Margin="0,60,60,0">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="current player:" Style="{StaticResource TexBlockStyle}"/>
-                <TextBlock Text="{Binding CurrentPLayerIndex}" Style="{StaticResource TexBlockStyle}" Margin="5,0,0,0"/>
-                <Button Style="{StaticResource ButtonStyle}"  Content="change Player" Click="Change_PLayer_Click" Margin="5,0,0,0"/>
-            </StackPanel >
+                <TextBlock Style="{StaticResource TexBlockStyle}" Text="Possible changes." />
+                <ComboBox Style="{StaticResource ComboboxItemContainerStyle}" ItemsSource="{Binding PossibleChanges}" SelectedItem="{Binding SelectedChange, Mode=TwoWay}">
+                </ComboBox>
+            </StackPanel>
+            <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ExchangeCoins}" Content="Exchange Coins:" Click="ExchangeCoinsClick" />
+
             <StackPanel Orientation="Horizontal">
-                <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ButtonStyle}" Content=" Throw Dice:" Click="Throw_Dice_Click" />
+                <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ThrowDiceButton}" Content=" Throw Dice:" Click="Throw_Dice_Click" />
                 <TextBlock Grid.Row="3" Grid.Column="8"  Style="{StaticResource TexBlockStyle}" Text="{Binding BlueDice}" Margin="5,0,0,0" />
                 <TextBlock Grid.Row="3" Grid.Column="9"  Style="{StaticResource TexBlockStyle}" Text="{Binding RedDice}"  Margin="5,0,0,0"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="current player:" Style="{StaticResource TexBlockStyle}"/>
+                <TextBlock Text="{Binding CurrentPlayerIndex}" Style="{StaticResource TexBlockStyle}" Margin="5,0,0,0"/>
+                <Button Style="{StaticResource ChangePlayerButtonStyle}"  Content="change Player" Click="Change_PLayer_Click" Margin="5,0,0,0"/>
+            </StackPanel >
+
             <!--<local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>-->
         </StackPanel>
     </StackPanel>

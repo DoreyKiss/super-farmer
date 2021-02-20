@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using SuperFarmer.DataModell;
+using SuperFarmer.PlayArea;
 
 namespace SuperFarmer.WPF
 {
@@ -16,6 +17,19 @@ namespace SuperFarmer.WPF
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private StateEnum _GameStateEnum;
+
+
+        public StateEnum GameStateEnum
+        {
+            get { return _GameStateEnum; }
+            set
+            {
+                _GameStateEnum = value;
+                OnPropertyChanged(nameof(GameStateEnum));
             }
         }
 
@@ -58,13 +72,13 @@ namespace SuperFarmer.WPF
 
         private int _CurrentPLayerIndex;
 
-        public int CurrentPLayerIndex
+        public int CurrentPlayerIndex
         {
             get { return _CurrentPLayerIndex; }
             set
             {
                 _CurrentPLayerIndex = value;
-                OnPropertyChanged(nameof(CurrentPLayerIndex));
+                OnPropertyChanged(nameof(CurrentPlayerIndex));
             }
         }
 
@@ -144,6 +158,34 @@ namespace SuperFarmer.WPF
             {
                 _NumberOfCurrentPlayersBigDogs = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersBigDogs));
+            }
+        }
+
+        private ObservableCollection<string> _PossibleChanges;
+        public ObservableCollection<string> PossibleChanges
+        {
+            get { return _PossibleChanges; }
+            set
+            {
+                _PossibleChanges = value;
+                OnPropertyChanged(nameof(PossibleChanges));
+            }
+        }
+
+        private string _SelectedChange;
+        public string SelectedChange
+        {
+            get
+            {
+                return _SelectedChange;
+            }
+            set
+            {
+                if (SelectedChange == value)
+                    return;
+
+                _SelectedChange = value;
+                OnPropertyChanged(nameof(SelectedChange));
             }
         }
     }

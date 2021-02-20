@@ -15,18 +15,21 @@ namespace SuperFarmer.DataModell
         public int SmallDog { get; private set; }
         public int BigDog { get; private set; }
 
-        private Dictionary<IHand.HandEnum, int> ElementsInHand = new Dictionary<IHand.HandEnum, int>();
+        //todo make sure it this  is a deepcopy
+        public Dictionary<HandEnum, int> GetElementInHand { get { return new Dictionary<HandEnum, int>(ElementsInHand); } }
+
+        private readonly Dictionary<HandEnum, int> ElementsInHand= new Dictionary<HandEnum, int>();
 
         public Hand()
         {
 
         }
 
-        public void AddAnimal(IHand.HandEnum key, int value = 0)
+        public void AddAnimal(HandEnum key, int value = 0)
         {
             if(!ElementsInHand.ContainsKey(key))
             {
-                ElementsInHand.Add(IHand.HandEnum.Bunny, 0);
+                ElementsInHand.Add(key, value);
             }
             else
             {
@@ -36,7 +39,7 @@ namespace SuperFarmer.DataModell
             UpdateProp(key);
         }
 
-        public int GetAnimal(IHand.HandEnum key)
+        public int GetAnimal(HandEnum key)
         {
             if (!ElementsInHand.ContainsKey(key))
             {
@@ -45,7 +48,7 @@ namespace SuperFarmer.DataModell
             return ElementsInHand[key];
         }
 
-        public void LoseAnimalAll(IHand.HandEnum key)
+        public void LoseAnimalAll(HandEnum key)
         {
             if (!ElementsInHand.ContainsKey(key))
             {
@@ -54,7 +57,7 @@ namespace SuperFarmer.DataModell
             ElementsInHand[key] = 0;
             UpdateProp(key);
         }
-        public void LoseAnimal(IHand.HandEnum key, int value)
+        public void LoseAnimal(HandEnum key, int value)
         {
             if (!ElementsInHand.ContainsKey(key))
             {
@@ -64,29 +67,29 @@ namespace SuperFarmer.DataModell
             UpdateProp(key);
         }
 
-        private void UpdateProp(IHand.HandEnum key)
+        private void UpdateProp(HandEnum key)
         {
             switch (key)
             {
-                case IHand.HandEnum.Bunny:
+                case HandEnum.Bunny:
                     Bunny = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.Sheep:
+                case HandEnum.Sheep:
                     Sheep = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.Pig:
+                case HandEnum.Pig:
                     Pig = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.Cow:
+                case HandEnum.Cow:
                     Cow = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.Horse:
+                case HandEnum.Horse:
                     Horse = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.SmallDog:
+                case HandEnum.SmallDog:
                     SmallDog = ElementsInHand[key];
                     return;
-                case IHand.HandEnum.BigDog:
+                case HandEnum.BigDog:
                     BigDog = ElementsInHand[key];
                     return;
             }

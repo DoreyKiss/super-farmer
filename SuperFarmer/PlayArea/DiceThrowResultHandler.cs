@@ -7,13 +7,9 @@ namespace SuperFarmer.PlayArea
 {
     public class DiceThrowResultHandler
     {
-
-        private CoinDeck _deck;
-
         //todo when losing beacuse of fox or wolf shall we give stuff after losing stuff or before?
         public void GetResult(Player player, AnimalEnum blue, AnimalEnum red, CoinDeck deck)
         {
-            _deck = deck;
             //wolf fox cow and horse can only occure once
             if (red == blue)
             {
@@ -29,13 +25,13 @@ namespace SuperFarmer.PlayArea
             {
                 if (player._curretHand.SmallDog != 0)
                 {
-                    deck.AddToDeck(IHand.HandEnum.SmallDog, 1);
-                    player._curretHand.LoseAnimal(IHand.HandEnum.SmallDog, 1);
+                    deck.AddToDeck(HandEnum.SmallDog, 1);
+                    player._curretHand.LoseAnimal(HandEnum.SmallDog, 1);
                 }
                 else
                 {
-                    deck.AddToDeck(IHand.HandEnum.Bunny, player._curretHand.Bunny);
-                    player._curretHand.LoseAnimalAll(IHand.HandEnum.Bunny);
+                    deck.AddToDeck(HandEnum.Bunny, player._curretHand.Bunny);
+                    player._curretHand.LoseAnimalAll(HandEnum.Bunny);
                 }
 
             }
@@ -48,8 +44,8 @@ namespace SuperFarmer.PlayArea
                 if (player._curretHand.BigDog != 0)
                 {
                     //todo lose only one dog
-                    deck.AddToDeck(IHand.HandEnum.BigDog, 1);
-                    player._curretHand.LoseAnimal(IHand.HandEnum.BigDog, 1);
+                    deck.AddToDeck(HandEnum.BigDog, 1);
+                    player._curretHand.LoseAnimal(HandEnum.BigDog, 1);
                 }
                 else
                 {
@@ -64,8 +60,8 @@ namespace SuperFarmer.PlayArea
 
         private void AddAnimal(Player player, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
         {
-            var temp = player._curretHand.GetAnimal((IHand.HandEnum)diceValue);
-            var (animal, number) = ((IHand.HandEnum)diceValue, (temp + numberOfoccurrences) / 2);
+            var temp = player._curretHand.GetAnimal((HandEnum)diceValue);
+            var (animal, number) = ((HandEnum)diceValue, (temp + numberOfoccurrences) / 2);
             if (number != 0)
             {
                 var hasEnoughCoins = deck.SubstractFromDeck(animal, number);
@@ -78,17 +74,17 @@ namespace SuperFarmer.PlayArea
 
         private void WolfAttack(Player player, CoinDeck deck)
         {
-            deck.AddToDeck(IHand.HandEnum.Bunny, player._curretHand.Bunny);
-            player._curretHand.LoseAnimalAll(IHand.HandEnum.Bunny);
+            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Bunny);
+            player._curretHand.LoseAnimalAll(HandEnum.Bunny);
 
-            deck.AddToDeck(IHand.HandEnum.Bunny, player._curretHand.Sheep);
-            player._curretHand.LoseAnimalAll(IHand.HandEnum.Sheep);
+            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Sheep);
+            player._curretHand.LoseAnimalAll(HandEnum.Sheep);
 
-            deck.AddToDeck(IHand.HandEnum.Bunny, player._curretHand.Pig);
-            player._curretHand.LoseAnimalAll(IHand.HandEnum.Pig);
+            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Pig);
+            player._curretHand.LoseAnimalAll(HandEnum.Pig);
 
-            deck.AddToDeck(IHand.HandEnum.Bunny, player._curretHand.Cow);
-            player._curretHand.LoseAnimalAll(IHand.HandEnum.Cow);
+            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Cow);
+            player._curretHand.LoseAnimalAll(HandEnum.Cow);
         }
     }
 }
