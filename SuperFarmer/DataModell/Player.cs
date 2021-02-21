@@ -6,9 +6,9 @@ namespace SuperFarmer.DataModell
 {
     public class Player
     {
-        public Guid PlayerID { get; private set; }
+        public Guid PlayerID { get; }
 
-        public IHand _curretHand { get; private set; }
+        public IHand _curretHand { get; }
         public Player(IHand hand)
         {
             PlayerID = new Guid();
