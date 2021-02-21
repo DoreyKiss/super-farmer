@@ -1,5 +1,6 @@
 ﻿using SuperFarmer.DataModell;
 using SuperFarmer.PlayArea;
+using SuperFarmer.WPF.Resources;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,31 +24,25 @@ namespace SuperFarmer.WPF.views
     {
         private GameGod gameGod;
         private MainViewModel gameViewModel;
-        private readonly BlueDice blueDice;
-        private readonly RedDice redDice;
+        private  BlueDice blueDice;
+        private  RedDice redDice;
         private readonly Dictionary<string, (int, HandEnum, int, HandEnum)> mapStringsToChanges= new Dictionary<string, (int, HandEnum, int, HandEnum)>();
 
 
-        public GamePageView(GameGod _gameGod, MainViewModel viewModel)
+        public GamePageView(GameGod _gameGod) : this(_gameGod, new MainViewModel(), new RedDice(), new BlueDice())
         {
-            gameGod = _gameGod;
-            gameViewModel = viewModel;
-            InitializeComponent();
-            DataContext = gameViewModel;
-            blueDice = new BlueDice();
-            redDice = new RedDice();
-            UpdatePLayerValues();
         }
 
         public GamePageView(GameGod _gameGod, MainViewModel viewModel, IDice _redDice, IDice _blueDice)
         {
             gameGod = _gameGod;
             gameViewModel = viewModel;
-            InitializeComponent();
-            DataContext = gameViewModel;
             blueDice = (BlueDice)_blueDice;
             redDice = (RedDice)_redDice;
-            UpdatePLayerValues();
+            InitializeComponent();
+            gameViewModel.NumberOfPlayersPlaying = gameGod.Players.Count;
+            DataContext = gameViewModel;
+            gameViewModel.GameStateEnum = gameGod.StateEnum;
         }
 
         private void Throw_Dice_Click(object sender, RoutedEventArgs e)
@@ -55,17 +50,18 @@ namespace SuperFarmer.WPF.views
             var (blue, red) = gameGod.ThrowDice(blueDice, redDice);
             gameViewModel.BlueDice = blue;
             gameViewModel.RedDice = red;
-            UpdatePLayerValues();
+            UpdatePlayerValues();
         }
 
         private void Change_PLayer_Click(object sender, RoutedEventArgs e)
         {
             gameViewModel.CurrentPlayerIndex = gameGod.ChangePLayer();
-            UpdatePLayerValues();
+            UpdatePlayerValues();
         }
 
-        private void UpdatePLayerValues()
+        private void UpdatePlayerValues()
         {
+            
             gameViewModel.NumberOfCurrentPlayersBunnies = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.Bunny;
             gameViewModel.NumberOfCurrentPlayersSheeps = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.Sheep;
             gameViewModel.NumberOfCurrentPlayersPigs = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.Pig;
@@ -73,20 +69,21 @@ namespace SuperFarmer.WPF.views
             gameViewModel.NumberOfCurrentPlayersHorses = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.Horse;
             gameViewModel.NumberOfCurrentPlayersSmallDogs = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.SmallDog;
             gameViewModel.NumberOfCurrentPlayersBigDogs = gameGod.Players[gameViewModel.CurrentPlayerIndex]._curretHand.BigDog;
+
+            //todo
             if(gameGod.CurrentPossibleChanges != null)
             {
                 gameViewModel.PossibleChanges = GetListOfChanges(gameGod.CurrentPossibleChanges);
             }
-            gameViewModel.GameStateEnum = gameGod.stateEnum;
+            gameViewModel.GameStateEnum = gameGod.StateEnum;
         }
 
         private void ExchangeCoinsClick(object sender, RoutedEventArgs e)
         {
             //todo, shall replace with a more ux friendly solution 
-            if (gameViewModel.SelectedChange is null)
+            if (gameViewModel.SelectedChange == StringResources.NOCHANGEREQUIRED)
             {
                 gameGod.ChanegeCoins();
-
             }
             else
             {
@@ -94,29 +91,29 @@ namespace SuperFarmer.WPF.views
                 gameGod.ChanegeCoins(cost, changeFromAnimal, worth, changeToAnimal);
             }
 
-
-            UpdatePLayerValues();
+            UpdatePlayerValues();
         }
 
 
         //todo shall we be able to exchange 12 bunnyies in the same time? etc
-        private ObservableCollection<string> GetListOfChanges(Dictionary<HandEnum, Dictionary<HandEnum, (int, int)>> dict)
+        private ObservableCollection<string> GetListOfChanges(Dictionary<HandEnum, List<( int, HandEnum, int)>> dict)
         {
             mapStringsToChanges.Clear();
             
             var tempList = new ObservableCollection<string>();
             foreach (var a in dict)
             {
-                foreach (var (animalType, (cost, worth)) in a.Value)
+                foreach (var (cost, animalType, worth) in a.Value)
                 {
+
                     var tempString = cost.ToString() + a.Key.ToString() + " --> " + worth.ToString() + " " + animalType;
                     tempList.Add(tempString);
                     mapStringsToChanges.Add(tempString, (cost, a.Key, worth, animalType));
                 }
             }
+            tempList.Insert(0, StringResources.NOCHANGEREQUIRED);
             return tempList;
         }
-
     }
 }
 

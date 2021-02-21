@@ -1,4 +1,5 @@
 ﻿using SuperFarmer.PlayArea;
+using SuperFarmer.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,21 +20,19 @@ namespace SuperFarmer.WPF.views
     /// </summary>
     public partial class WellcomePageView : Page
     {
-        private GameGod gameGod;
-        private MainViewModel gameViewModel;
 
-        public WellcomePageView(GameGod _gameGod, MainViewModel viewModel)
+        private WellComePageViewModell viewModell;
+
+        public WellcomePageView()
         {
-            gameGod = _gameGod;
-            gameViewModel = viewModel;
+            viewModell = new WellComePageViewModell();
             InitializeComponent();
-            DataContext = gameViewModel;
+            DataContext = viewModell;
         }
         private void BtnClickStartGame(object sender, RoutedEventArgs e)
         {
-            
-            gameGod.StartGame(gameViewModel.NumberOfPlayers);
-            NavigationService.Navigate(new GamePageView(gameGod, gameViewModel));
+
+            NavigationService.Navigate(new GamePageView(new GameGod(viewModell.NumberOfPlayers)));
         }
     }
 }

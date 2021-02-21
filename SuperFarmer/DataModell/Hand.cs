@@ -22,47 +22,40 @@ namespace SuperFarmer.DataModell
 
         public Hand()
         {
-
+            ElementsInHand.Add(HandEnum.Bunny, 0);
+            UpdateProp(HandEnum.Bunny);
+            ElementsInHand.Add(HandEnum.Sheep, 0);
+            UpdateProp(HandEnum.Sheep);
+            ElementsInHand.Add(HandEnum.Pig, 0);
+            UpdateProp(HandEnum.Pig);
+            ElementsInHand.Add(HandEnum.Cow, 0);
+            UpdateProp(HandEnum.Cow);
+            ElementsInHand.Add(HandEnum.Horse, 0);
+            UpdateProp(HandEnum.Horse);
+            ElementsInHand.Add(HandEnum.SmallDog, 0);
+            UpdateProp(HandEnum.SmallDog);
+            ElementsInHand.Add(HandEnum.BigDog, 0);
+            UpdateProp(HandEnum.BigDog);
         }
 
         public void AddAnimal(HandEnum key, int value = 0)
         {
-            if(!ElementsInHand.ContainsKey(key))
-            {
-                ElementsInHand.Add(key, value);
-            }
-            else
-            {
-                ElementsInHand[key] = ElementsInHand[key] + value;
-            }
-
+            ElementsInHand[key] = ElementsInHand[key] + value;
             UpdateProp(key);
         }
 
         public int GetAnimal(HandEnum key)
         {
-            if (!ElementsInHand.ContainsKey(key))
-            {
-                ElementsInHand.Add(key, 0);
-            }
             return ElementsInHand[key];
         }
 
         public void LoseAnimalAll(HandEnum key)
         {
-            if (!ElementsInHand.ContainsKey(key))
-            {
-                ElementsInHand.Add(key, 0);
-            }
             ElementsInHand[key] = 0;
             UpdateProp(key);
         }
         public void LoseAnimal(HandEnum key, int value)
         {
-            if (!ElementsInHand.ContainsKey(key))
-            {
-                ElementsInHand.Add(key, 0);
-            }
             ElementsInHand[key] = ElementsInHand[key] - value;
             UpdateProp(key);
         }

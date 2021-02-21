@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
     <Page.Background>
-        <ImageBrush ImageSource="..\resources\GameBackGround.png" Stretch="Fill" />
+        <ImageBrush ImageSource="..\resources\pictures\GameBackGround.png" Stretch="Fill" />
     </Page.Background>
     <Page.Resources>
         <ResourceDictionary>
@@ -18,98 +18,46 @@
         </ResourceDictionary>
     </Page.Resources>
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-    <StackPanel Orientation="Horizontal">
-
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="10"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-            </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource TexBlockStyle}" Text="Number of Players in Game:" Grid.Column="2" Grid.Row="2"/>
-            <TextBlock Style="{StaticResource TexBlockStyle}" Text="{Binding NumberOfPlayers}" Grid.Column="2" Grid.Row="3"/>
-        </Grid>
-
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
-            </Grid.RowDefinitions>
-
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NumberOfCurrentPlayersBunnies}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="2" Grid.Column="2" Source="..\resources\bunny.png"  Style="{StaticResource ImageStyle}"  />
-
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NumberOfCurrentPlayersSheeps}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="3" Grid.Column="2" Source="..\resources\sheep.png" Style="{StaticResource ImageStyle}" />
-
-            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding NumberOfCurrentPlayersPigs}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="4" Grid.Column="2"  Source="..\resources\pig.png" Style="{StaticResource ImageStyle}"/>
-
-            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding NumberOfCurrentPlayersCows}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="5" Grid.Column="2" Source="..\resources\cow.png" Style="{StaticResource ImageStyle}" />
-
-            <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding NumberOfCurrentPlayersHorses}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="2" Grid.Column="5" Source="..\resources\horse.png" Style="{StaticResource ImageStyle}" />
-
-            <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding NumberOfCurrentPlayersSmallDogs}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="3" Grid.Column="5" Source="..\resources\smalldog.png" Style="{StaticResource ImageStyle}" />
-
-            <TextBox Grid.Row="4" Grid.Column="4" Text="{Binding NumberOfCurrentPlayersBigDogs}" Style="{StaticResource TexboxStyle}"/>
-            <Image Grid.Row="4" Grid.Column="5" Source="..\resources\bigdog.png" Style="{StaticResource ImageStyle}" />
-
-        </Grid>
-        
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Vertical" Margin="0,60,60,0">
-            <StackPanel Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Margin="60,60,60,0 " Grid.Column="0" >
+            <StackPanel Orientation="Vertical">
                 <TextBlock Style="{StaticResource TexBlockStyle}" Text="Possible changes." />
                 <ComboBox Style="{StaticResource ComboboxItemContainerStyle}" ItemsSource="{Binding PossibleChanges}" SelectedItem="{Binding SelectedChange, Mode=TwoWay}">
                 </ComboBox>
             </StackPanel>
-            <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ExchangeCoins}" Content="Exchange Coins:" Click="ExchangeCoinsClick" />
+            <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ExchangeCoins}" Content="Exchange." Click="ExchangeCoinsClick" />
+       </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ThrowDiceButton}" Content=" Throw Dice:" Click="Throw_Dice_Click" />
-                <TextBlock Grid.Row="3" Grid.Column="8"  Style="{StaticResource TexBlockStyle}" Text="{Binding BlueDice}" Margin="5,0,0,0" />
-                <TextBlock Grid.Row="3" Grid.Column="9"  Style="{StaticResource TexBlockStyle}" Text="{Binding RedDice}"  Margin="5,0,0,0"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource TexBlockStyle}" Text="Number of Players in Game: "/>
+                <TextBlock Style="{StaticResource TexBlockStyle}" Text="{Binding NumberOfPlayersPlaying}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="current player:" Style="{StaticResource TexBlockStyle}"/>
-                <TextBlock Text="{Binding CurrentPlayerIndex}" Style="{StaticResource TexBlockStyle}" Margin="5,0,0,0"/>
-                <Button Style="{StaticResource ChangePlayerButtonStyle}"  Content="change Player" Click="Change_PLayer_Click" Margin="5,0,0,0"/>
-            </StackPanel >
-
-            <!--<local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>-->
+            
+            <local:PlayerControl HorizontalAlignment="Center" VerticalAlignment="Bottom" />
         </StackPanel>
-    </StackPanel>
 
+
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Vertical" Margin="60,60,60,0 " Grid.Column="2" >
+            <Button  Grid.Row="2" Grid.Column="7" Style="{StaticResource ThrowDiceButton}" Content=" Throw Dice:" Click="Throw_Dice_Click" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+             
+            <TextBlock Grid.Row="3" Grid.Column="8"  Style="{StaticResource TexBlockStyle}" Text="{Binding BlueDice}" Margin="5,0,0,0" />
+            <TextBlock Grid.Row="3" Grid.Column="9"  Style="{StaticResource TexBlockStyle}" Text="{Binding RedDice}"  Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="current player:" Style="{StaticResource TexBlockStyle}"/>
+                <TextBlock Text="{Binding CurrentPlayerNumber }" Style="{StaticResource TexBlockStyle}" Margin="5,0,0,0"/>
+            </StackPanel >
+            <Button Style="{StaticResource ChangePlayerButtonStyle}"  Content="change Player" Click="Change_PLayer_Click" Margin="5,0,0,0"/>
+        </StackPanel>
+
+    </Grid>
+  
 </Page>

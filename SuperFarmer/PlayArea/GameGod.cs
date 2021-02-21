@@ -8,22 +8,22 @@ namespace SuperFarmer.PlayArea
     public partial class GameGod
     {
 
-        public List<Player> Players { get; set; } = new List<Player>();
-        public Dictionary<HandEnum, Dictionary<HandEnum, (int, int)>> CurrentPossibleChanges { get; private set; }
+        public List<Player> Players { get; private set; } = new List<Player>();
+        public Dictionary<HandEnum, List<(int, HandEnum, int)>> CurrentPossibleChanges { get; private set; }
         public Random rnd = new Random();
         public CoinDeck deck;
-        public StateEnum stateEnum { get; private set; }
+        public StateEnum StateEnum { get; private set; }
 
 
         private int currentPLayer;
-        private int playerNumberSum;
         private DiceThrowResultHandler resultHandler;
         private IExchange exchange;
 
-        public GameGod()
+        public GameGod(int numberOfPLayers)
         {
             resultHandler = new DiceThrowResultHandler();
             exchange = new ExChangeCoins();
+            StartGame(numberOfPLayers);
         }
 
         public void StartGame(int numberOfPLayers)
@@ -34,22 +34,21 @@ namespace SuperFarmer.PlayArea
             {
                 Players.Add(new Player(new Hand()));
             }
-            playerNumberSum = numberOfPLayers;
             currentPLayer = 0;
-            stateEnum = StateEnum.ThrowDice;
+            StateEnum = StateEnum.ThrowDice;
         }
 
         public void ChanegeCoins(int cost, HandEnum exhange, int worth, HandEnum exchangeTo)
         {
             exchange.ExchangeAnimalCoins(cost, exhange, worth, exchangeTo, Players[currentPLayer], deck);
             CurrentPossibleChanges = exchange.GetPossibleExchanges(Players[currentPLayer], deck);
-            stateEnum = StateEnum.ThrowDice;
+            StateEnum = StateEnum.ThrowDice;
         }
 
-        //if not change is require by user
+        //if no change is required by user
         public void ChanegeCoins()
         {
-            stateEnum = StateEnum.ThrowDice;
+            StateEnum = StateEnum.ThrowDice;
         }
 
         public (AnimalEnum, AnimalEnum) ThrowDice(IDice blueDice, IDice redDice)
@@ -58,20 +57,21 @@ namespace SuperFarmer.PlayArea
             var blue = blueDice.ThrowDice();
             var red = redDice.ThrowDice();
             resultHandler.GetResult(Players[currentPLayer], blue , red, deck);
-            stateEnum = StateEnum.NextPlayer;
-
-            //todo shall I leave it here or delete? (when game goes in a directed flow it is not necessery.)
-            CurrentPossibleChanges = exchange.GetPossibleExchanges(Players[currentPLayer], deck);
+            StateEnum = StateEnum.NextPlayer;
             return (blue, red);
         }
 
         public int ChangePLayer()
         {
-            var nextPLayer = currentPLayer = (currentPLayer + 1) % playerNumberSum; // CHANGE PLAYER 
-            stateEnum = StateEnum.ChangeCoins;
+            var nextPlayer = currentPLayer = (currentPLayer + 1) % (Players.Count); // CHANGE PLAYER 
+            StateEnum = StateEnum.ChangeCoins;
             //by the time chanegeCoins is called, list shall be updated
-            CurrentPossibleChanges = exchange.GetPossibleExchanges(Players[nextPLayer], deck);
-            return nextPLayer;
+            CurrentPossibleChanges = exchange.GetPossibleExchanges(Players[nextPlayer], deck);
+            if(CurrentPossibleChanges.Count == 0)
+            {
+                StateEnum = StateEnum.ThrowDice;
+            }
+            return nextPlayer;
         }
 
     }

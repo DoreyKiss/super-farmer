@@ -12,14 +12,6 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type Image}" x:Key="PigStyle"
-          BasedOn="{StaticResource ImageStyle}">
-        <Setter Property="Source">
-            <Setter.Value>
-                <FormatConvertedBitmap Source="..\resources\pig.png"  DestinationFormat='Gray4' />
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style TargetType="{x:Type Button}" x:Key="ButtonStyle">
         <Setter Property="Background" Value="#373737" />
@@ -102,6 +94,8 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="FontSize" Value="20" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
 
@@ -148,6 +142,15 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding GameStateEnum}" Value="0">
                 <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding PossibleChanges}" Value="null">
+                <Setter Property="Visibility" Value="Hidden"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding GameStateEnum}" Value="1">
+                <Setter Property="Visibility" Value="Hidden"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding GameStateEnum}" Value="2">
+                <Setter Property="Visibility" Value="Hidden"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

@@ -21,18 +21,34 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\BigDog.png" />
-    <Resource Include="Resources\bunny.png" />
-    <Resource Include="Resources\cow.png" />
-    <Resource Include="Resources\GameBackGround.png" />
-    <Resource Include="Resources\sheep.png" />
-    <Resource Include="Resources\SmallDog.png" />
-    <Resource Include="Resources\Super-Farmer-BackGround.png" />
-    <Resource Include="Resources\horse.png" />
-    <Resource Include="Resources\left rules.png" />
-    <Resource Include="Resources\pig.png" />
-    <Resource Include="Resources\right rules.png" />
-    <Resource Include="Resources\Usercontrolbackground.png" />
+    <Resource Include="Resources\pictures\BigDog.png" />
+    <Resource Include="Resources\pictures\bunny.png" />
+    <Resource Include="Resources\pictures\cow.png" />
+    <Resource Include="Resources\pictures\GameBackGround.png" />
+    <Resource Include="Resources\pictures\sheep.png" />
+    <Resource Include="Resources\pictures\SmallDog.png" />
+    <Resource Include="Resources\pictures\Super-Farmer-BackGround.png" />
+    <Resource Include="Resources\pictures\horse.png" />
+    <Resource Include="Resources\pictures\left rules.png" />
+    <Resource Include="Resources\pictures\pig.png" />
+    <Resource Include="Resources\pictures\right rules.png" />
+    <Resource Include="Resources\pictures\Usercontrolbackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\StringResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\StringResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

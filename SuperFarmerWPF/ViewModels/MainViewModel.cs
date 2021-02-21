@@ -5,186 +5,182 @@ using System.ComponentModel;
 using System.Text;
 using SuperFarmer.DataModell;
 using SuperFarmer.PlayArea;
+using SuperFarmer.WPF.Resources;
+using SuperFarmer.WPF.ViewModels;
 
 namespace SuperFarmer.WPF
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : AbstractBaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private int _numberOfPlayersPlaying;
 
-        private void OnPropertyChanged(string propertyName)
+        public int NumberOfPlayersPlaying
         {
-            if (PropertyChanged != null)
+            get { return _numberOfPlayersPlaying; }
+            set
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                _numberOfPlayersPlaying = value;
+                OnPropertyChanged(nameof(NumberOfPlayersPlaying));
             }
         }
 
-        private StateEnum _GameStateEnum;
-
+        private StateEnum _gameStateEnum;
 
         public StateEnum GameStateEnum
         {
-            get { return _GameStateEnum; }
+            get { return _gameStateEnum; }
             set
             {
-                _GameStateEnum = value;
+                _gameStateEnum = value;
                 OnPropertyChanged(nameof(GameStateEnum));
             }
         }
 
-        //todo miért csak az idexen megy a binding?
-        private int _NumberOfPLayers = 1;
-
-        public int NumberOfPlayers
-        {
-            get { return _NumberOfPLayers; }
-            set
-            {
-                _NumberOfPLayers = value + 1;
-                OnPropertyChanged(nameof(NumberOfPlayers));
-            }
-        }
-
-        private AnimalEnum _BlueDice;
+        private AnimalEnum _blueDice;
 
         public AnimalEnum BlueDice
         {
-            get { return _BlueDice ; }
+            get { return _blueDice; }
             set
             {
-                _BlueDice = value;
+                _blueDice = value;
                 OnPropertyChanged(nameof(BlueDice));
             }
         }
 
-        private AnimalEnum _RedDice;
+        private AnimalEnum _redDice;
 
         public AnimalEnum RedDice
         {
-            get { return _RedDice ; }
+            get { return _redDice; }
             set
             {
-                _RedDice = value;
+                _redDice = value;
                 OnPropertyChanged(nameof(RedDice));
             }
         }
 
-        private int _CurrentPLayerIndex;
+        private int _currentPlayerIndex;
 
         public int CurrentPlayerIndex
         {
-            get { return _CurrentPLayerIndex; }
+            get { return _currentPlayerIndex; }
             set
             {
-                _CurrentPLayerIndex = value;
+                _currentPlayerIndex = value;
                 OnPropertyChanged(nameof(CurrentPlayerIndex));
+                OnPropertyChanged(nameof(CurrentPlayerNumber));
             }
         }
 
-        private int _NumberOfCurrentPlayersBunnies;
+        public int CurrentPlayerNumber
+        {
+            get { return _currentPlayerIndex + 1; }
+        }
+
+        private int _numberOfCurrentPlayersBunnies;
 
 
         public int NumberOfCurrentPlayersBunnies
         {
-            get { return _NumberOfCurrentPlayersBunnies; }
+            get { return _numberOfCurrentPlayersBunnies; }
             set
             {
-                _NumberOfCurrentPlayersBunnies = value;
+                _numberOfCurrentPlayersBunnies = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersBunnies));
             }
         }
 
-        private int _NumberOfCurrentPlayersSheeps;
+        private int _numberOfCurrentPlayersSheeps;
         public int NumberOfCurrentPlayersSheeps
         {
-            get { return _NumberOfCurrentPlayersSheeps; }
+            get { return _numberOfCurrentPlayersSheeps; }
             set
             {
-                _NumberOfCurrentPlayersSheeps = value;
+                _numberOfCurrentPlayersSheeps = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersSheeps));
             }
         }
 
-        private int _NumberOfCurrentPlayersPigs;
+        private int _numberOfCurrentPlayersPigs;
         public int NumberOfCurrentPlayersPigs
         {
-            get { return _NumberOfCurrentPlayersPigs; }
+            get { return _numberOfCurrentPlayersPigs; }
             set
             {
-                _NumberOfCurrentPlayersPigs = value;
+                _numberOfCurrentPlayersPigs = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersPigs));
             }
         }
 
-        private int _NumberOfCurrentPlayersCows;
+        private int _numberOfCurrentPlayersCows;
         public int NumberOfCurrentPlayersCows
         {
-            get { return _NumberOfCurrentPlayersCows; }
+            get { return _numberOfCurrentPlayersCows; }
             set
             {
-                _NumberOfCurrentPlayersCows = value;
+                _numberOfCurrentPlayersCows = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersCows));
             }
         }
 
-        private int _NumberOfCurrentPlayersHorses;
+        private int _numberOfCurrentPlayersHorses;
         public int NumberOfCurrentPlayersHorses
         {
-            get { return _NumberOfCurrentPlayersHorses; }
+            get { return _numberOfCurrentPlayersHorses; }
             set
             {
-                _NumberOfCurrentPlayersHorses = value;
+                _numberOfCurrentPlayersHorses = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersHorses));
             }
         }
 
-        private int _NumberOfCurrentPlayersSmallDogs;
+        private int _numberOfCurrentPlayersSmallDogs;
         public int NumberOfCurrentPlayersSmallDogs
         {
-            get { return _NumberOfCurrentPlayersSmallDogs; }
+            get { return _numberOfCurrentPlayersSmallDogs; }
             set
             {
-                _NumberOfCurrentPlayersSmallDogs = value;
+                _numberOfCurrentPlayersSmallDogs = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersSmallDogs));
             }
         }
 
-        private int _NumberOfCurrentPlayersBigDogs;
+        private int _numberOfCurrentPlayersBigDogs;
         public int NumberOfCurrentPlayersBigDogs
         {
-            get { return _NumberOfCurrentPlayersBigDogs; }
+            get { return _numberOfCurrentPlayersBigDogs; }
             set
             {
-                _NumberOfCurrentPlayersBigDogs = value;
+                _numberOfCurrentPlayersBigDogs = value;
                 OnPropertyChanged(nameof(NumberOfCurrentPlayersBigDogs));
             }
         }
 
-        private ObservableCollection<string> _PossibleChanges;
+        private ObservableCollection<string> _possibleChanges;
         public ObservableCollection<string> PossibleChanges
         {
-            get { return _PossibleChanges; }
+            get { return _possibleChanges; }
             set
             {
-                _PossibleChanges = value;
+                _possibleChanges = value;
                 OnPropertyChanged(nameof(PossibleChanges));
             }
         }
 
-        private string _SelectedChange;
+        private string _selectedChange;
         public string SelectedChange
         {
             get
             {
-                return _SelectedChange;
+                return _selectedChange ?? StringResources.NOCHANGEREQUIRED;
             }
             set
             {
                 if (SelectedChange == value)
                     return;
 
-                _SelectedChange = value;
+                _selectedChange = value;
                 OnPropertyChanged(nameof(SelectedChange));
             }
         }

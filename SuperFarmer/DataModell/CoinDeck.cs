@@ -20,10 +20,19 @@ namespace SuperFarmer.DataModell
             Coins.Add(HandEnum.BigDog, 2);
         }
 
+        public bool CanBeSubstractedFromDeck(HandEnum key, int value)
+        {
+            if (Coins[key] - value >= 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public bool SubstractFromDeck(HandEnum key, int value)
         {
-            if (Coins[key] - value >= 0)
+
+            if(CanBeSubstractedFromDeck(key, value))
             {
                 Coins[key] = Coins[key] - value;
                 return true;

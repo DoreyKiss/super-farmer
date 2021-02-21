@@ -17,7 +17,7 @@
 
 
     <Page.Background>
-        <ImageBrush ImageSource="..\resources\Super-Farmer-BackGround.png" Stretch="Fill" />
+        <ImageBrush ImageSource="..\resources\pictures\Super-Farmer-BackGround.png" Stretch="Fill" />
     </Page.Background>
 
 
@@ -25,12 +25,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Margin="100,0,0,0" HorizontalAlignment="Center">
             <TextBlock Style="{StaticResource TexBlockStyle}" Text="Please select number of players" />
             <ComboBox Style="{StaticResource ComboboxStyle}"
-                        SelectedIndex="{Binding NumberOfPlayers}" >
-                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" IsSelected="True" Content="1"></ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="2"></ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="3"></ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="4"></ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource ComboboxItemStyle}" Content="5"></ComboBoxItem>
+                        SelectedItem="{Binding NumberOfPlayers}" ItemsSource="{Binding NumberOfPossiblePlayers}" >
             </ComboBox>
 
             <Button Style="{StaticResource ButtonStyle}"

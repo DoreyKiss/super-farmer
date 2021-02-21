@@ -22,27 +22,18 @@ namespace SuperFarmer.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private GameGod gameGod;
-        private MainViewModel gameViewModel;
 
         public MainWindow()
         {
-            gameViewModel = new MainViewModel();
-            gameGod = new GameGod();
             InitializeComponent();
-            Main.Content = new WellcomePageView(gameGod, gameViewModel);
+            Main.Content = new WellcomePageView();
         }
 
-        private void BtnClickStartGamePg(object sender, RoutedEventArgs e)
-        {
 
-            Main.Content = new GamePageView(gameGod, gameViewModel);
-        }
         private void BtnClickWellcomePg(object sender, RoutedEventArgs e)
         {
-            Main.Content = new WellcomePageView(gameGod, gameViewModel);
+            Main.Content = new WellcomePageView();
         }
         
-
     }
 }

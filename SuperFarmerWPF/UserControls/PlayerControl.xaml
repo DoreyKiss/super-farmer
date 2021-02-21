@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SuperFarmer.WPF.UserControls"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" MinWidth="350" >
     <UserControl.Background>
-        <ImageBrush ImageSource="..\resources\Usercontrolbackground.png" Stretch="Fill" />
+        <ImageBrush ImageSource="..\resources\pictures\Usercontrolbackground.png" Stretch="Fill" />
     </UserControl.Background>
     <UserControl.Resources>
         <ResourceDictionary>
@@ -18,19 +18,16 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -39,27 +36,27 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="1" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="1" Grid.Column="2" Source="..\resources\bunny.png"  Style="{StaticResource ImageStyle}"  />
-        
-        <TextBox Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="2" Grid.Column="2" Source="..\resources\sheep.png" Style="{StaticResource ImageStyle}" />
-        
-        <TextBox Grid.Row="3" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="3" Grid.Column="2"  Source="..\resources\pig.png" Style="{StaticResource ImageStyle}"/>
-     
-        <TextBox Grid.Row="4" Grid.Column="1" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="4" Grid.Column="2" Source="..\resources\cow.png" Style="{StaticResource ImageStyle}" />
+        <TextBlock Margin="0,0,5,0" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersBunnies, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="1" Grid.Column="2" Source="..\resources\pictures\bunny.png"  Style="{StaticResource ImageStyle}"  />
 
-        <TextBox Grid.Row="1" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="1" Grid.Column="5" Source="..\resources\horse.png" Style="{StaticResource ImageStyle}" />
+        <TextBlock Margin="0,0,5,0" Grid.Row="2" Grid.Column="1" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersSheeps, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="2" Grid.Column="2" Source="..\resources\pictures\sheep.png" Style="{StaticResource ImageStyle}" />
 
-        <TextBox Grid.Row="2" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="2" Grid.Column="5" Source="..\resources\smalldog.png" Style="{StaticResource ImageStyle}" />
+        <TextBlock Margin="0,0,5,0" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersPigs, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="3" Grid.Column="2"  Source="..\resources\pictures\pig.png" Style="{StaticResource ImageStyle}"/>
 
-        <TextBox Grid.Row="3" Grid.Column="4" Text="8" Style="{StaticResource TexboxStyle}"/>
-        <Image Grid.Row="3" Grid.Column="5" Source="..\resources\bigdog.png" Style="{StaticResource ImageStyle}" />
+        <TextBlock Margin="0,0,5,0" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersCows, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="4" Grid.Column="2" Source="..\resources\pictures\cow.png" Style="{StaticResource ImageStyle}" />
 
-           
+        <TextBlock Margin="0,0,5,0"  Grid.Row="1" Grid.Column="4" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersHorses, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="1" Grid.Column="5" Source="..\resources\pictures\horse.png" Style="{StaticResource ImageStyle}" />
+
+        <TextBlock Margin="0,0,5,0"  Grid.Row="2" Grid.Column="4" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersSmallDogs, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="2" Grid.Column="5" Source="..\resources\pictures\smalldog.png" Style="{StaticResource ImageStyle}" />
+
+        <TextBlock Margin="0,0,5,0"  Grid.Row="3" Grid.Column="4" Text="{Binding Path=Parent.DataContext.NumberOfCurrentPlayersBigDogs, RelativeSource={RelativeSource Self}, Mode=OneWay}" Style="{StaticResource TexBlockStyle}"/>
+        <Image Grid.Row="3" Grid.Column="5" Source="..\resources\pictures\bigdog.png" Style="{StaticResource ImageStyle}" />
+
+
     </Grid>
 </UserControl>

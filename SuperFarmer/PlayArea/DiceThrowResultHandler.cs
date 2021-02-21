@@ -35,6 +35,10 @@ namespace SuperFarmer.PlayArea
                 }
 
             }
+            else
+            {
+                AddAnimal(player, blue, deck);
+            }
             //If you roll a wolf on other dice, you lose all the animals
             //except horse and small dog(if one of these or both are in
             //your possession). Proceed as above and return the animals to
@@ -52,10 +56,10 @@ namespace SuperFarmer.PlayArea
                     WolfAttack(player, deck);
                 }
             }
-
-
-            AddAnimal(player, red, deck);
-            AddAnimal(player, blue, deck);
+            else
+            {
+                AddAnimal(player, red, deck);
+            }
         }
 
         private void AddAnimal(Player player, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
@@ -77,13 +81,13 @@ namespace SuperFarmer.PlayArea
             deck.AddToDeck(HandEnum.Bunny, player._curretHand.Bunny);
             player._curretHand.LoseAnimalAll(HandEnum.Bunny);
 
-            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Sheep);
+            deck.AddToDeck(HandEnum.Sheep, player._curretHand.Sheep);
             player._curretHand.LoseAnimalAll(HandEnum.Sheep);
 
-            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Pig);
+            deck.AddToDeck(HandEnum.Pig, player._curretHand.Pig);
             player._curretHand.LoseAnimalAll(HandEnum.Pig);
 
-            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Cow);
+            deck.AddToDeck(HandEnum.Cow, player._curretHand.Cow);
             player._curretHand.LoseAnimalAll(HandEnum.Cow);
         }
     }
