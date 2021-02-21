@@ -10,7 +10,7 @@ namespace SuperFarmer.DataModell
 
         public AnimalEnum ThrowDice()
         {
-            return DiceValues[rnd.Next(0, 11)];
+            return DiceValues[rnd.Next(0, DiceValues.Count)];
         }
     }
 }
