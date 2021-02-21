@@ -8,13 +8,13 @@ namespace SuperFarmer.PlayArea
     public class DiceThrowResultHandler
     {
         //todo when losing beacuse of fox or wolf shall we give stuff after losing stuff or before?
-        public void GetResult(Player player, AnimalEnum blue, AnimalEnum red, CoinDeck deck)
+        public IHand GetResult(IHand hand, AnimalEnum blue, AnimalEnum red, CoinDeck deck)
         {
             //wolf fox cow and horse can only occure once
             if (red == blue)
             {
-                AddAnimal(player, red, deck, 2);
-                return;
+                AddAnimal(hand, red, deck, 2);
+                return hand;
             }
 
             //If you roll a fox on one of the dice, you lose all the rabbits.
@@ -23,21 +23,21 @@ namespace SuperFarmer.PlayArea
             //todo common stock
             if (blue == AnimalEnum.Fox)
             {
-                if (player._curretHand.SmallDog != 0)
+                if (hand.SmallDog != 0)
                 {
                     deck.AddToDeck(HandEnum.SmallDog, 1);
-                    player._curretHand.LoseAnimal(HandEnum.SmallDog, 1);
+                    hand.LoseAnimal(HandEnum.SmallDog, 1);
                 }
                 else
                 {
-                    deck.AddToDeck(HandEnum.Bunny, player._curretHand.Bunny);
-                    player._curretHand.LoseAnimalAll(HandEnum.Bunny);
+                    deck.AddToDeck(HandEnum.Bunny, hand.Bunny);
+                    hand.LoseAnimalAll(HandEnum.Bunny);
                 }
 
             }
             else
             {
-                AddAnimal(player, blue, deck);
+                AddAnimal(hand, blue, deck);
             }
             //If you roll a wolf on other dice, you lose all the animals
             //except horse and small dog(if one of these or both are in
@@ -45,51 +45,54 @@ namespace SuperFarmer.PlayArea
             //the common stock. Large dog protects your stock from the effects of wolf.
             if (red == AnimalEnum.Wolf)
             {
-                if (player._curretHand.BigDog != 0)
+                if (hand.BigDog != 0)
                 {
-                    //todo lose only one dog
                     deck.AddToDeck(HandEnum.BigDog, 1);
-                    player._curretHand.LoseAnimal(HandEnum.BigDog, 1);
+                    hand.LoseAnimal(HandEnum.BigDog, 1);
                 }
                 else
                 {
-                    WolfAttack(player, deck);
+                    WolfAttack(hand, deck);
                 }
             }
             else
             {
-                AddAnimal(player, red, deck);
+                AddAnimal(hand, red, deck);
             }
+
+            return hand;
         }
 
-        private void AddAnimal(Player player, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
+        private IHand AddAnimal(IHand hand, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
         {
-            var temp = player._curretHand.GetAnimal((HandEnum)diceValue);
+            var temp = hand.GetAnimal((HandEnum)diceValue);
             var (animal, number) = ((HandEnum)diceValue, (temp + numberOfoccurrences) / 2);
             if (number != 0)
             {
                 var hasEnoughCoins = deck.SubstractFromDeck(animal, number);
                 if (hasEnoughCoins)
                 {
-                    player._curretHand.AddAnimal(animal, number);
+                    hand.AddAnimal(animal, number);
                 }
             }
+            return hand;
         }
 
-        private void WolfAttack(Player player, CoinDeck deck)
+        private void WolfAttack(IHand hand, CoinDeck deck)
         {
-            deck.AddToDeck(HandEnum.Bunny, player._curretHand.Bunny);
-            player._curretHand.LoseAnimalAll(HandEnum.Bunny);
+            deck.AddToDeck(HandEnum.Bunny, hand.Bunny);
+            hand.LoseAnimalAll(HandEnum.Bunny);
 
-            deck.AddToDeck(HandEnum.Sheep, player._curretHand.Sheep);
-            player._curretHand.LoseAnimalAll(HandEnum.Sheep);
+            deck.AddToDeck(HandEnum.Sheep, hand.Sheep);
+            hand.LoseAnimalAll(HandEnum.Sheep);
 
-            deck.AddToDeck(HandEnum.Pig, player._curretHand.Pig);
-            player._curretHand.LoseAnimalAll(HandEnum.Pig);
+            deck.AddToDeck(HandEnum.Pig, hand.Pig);
+            hand.LoseAnimalAll(HandEnum.Pig); ;
 
-            deck.AddToDeck(HandEnum.Cow, player._curretHand.Cow);
-            player._curretHand.LoseAnimalAll(HandEnum.Cow);
+            deck.AddToDeck(HandEnum.Cow, hand.Cow);
+            hand.LoseAnimalAll(HandEnum.Cow);
         }
     }
 }
+
 

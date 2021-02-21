@@ -57,7 +57,7 @@ namespace SuperFarmer.PlayArea
                 {HandEnum.BigDog, new Dictionary<HandEnum, (int, int)>(){ { HandEnum.Pig, (1, 3) } } }
             };
 
-        public bool ExchangeAnimalCoins(int cost, HandEnum exchangeFromAnimal, int worth, HandEnum exchangeTo, Player player, CoinDeck deck)
+        public bool ExchangeAnimalCoins(int cost, HandEnum exchangeFromAnimal, int worth, HandEnum exchangeTo, IHand hand, CoinDeck deck)
         {
             var temp = changeValues[exchangeFromAnimal];
 
@@ -65,13 +65,13 @@ namespace SuperFarmer.PlayArea
             {
                 var (ExchangeBaseCost, ExchangeBaseWorth) = changeValues[exchangeFromAnimal][exchangeTo];
                 if ((cost == ExchangeBaseCost || cost % ExchangeBaseCost == 0) &&
-                    player._curretHand.GetElementInHand[exchangeFromAnimal] >= cost)
+                    hand.GetElementInHand[exchangeFromAnimal] >= cost)
                 {
                     if (deck.SubstractFromDeck(exchangeTo, worth) == true)
                     {
                         deck.AddToDeck(exchangeFromAnimal, cost);
-                        player._curretHand.LoseAnimal(exchangeFromAnimal, cost);
-                        player._curretHand.AddAnimal(exchangeTo, worth);
+                        hand.LoseAnimal(exchangeFromAnimal, cost);
+                        hand.AddAnimal(exchangeTo, worth);
                     }
 
                 }
@@ -80,53 +80,62 @@ namespace SuperFarmer.PlayArea
             return true;
         }
 
-        public Dictionary<HandEnum, List<(int, HandEnum, int)>> GetPossibleExchanges(Player player, CoinDeck deck)
+        public Dictionary<HandEnum, List<(int, HandEnum, int)>> GetPossibleExchanges(IHand hand, CoinDeck deck)
         {
             var temp = new Dictionary<HandEnum, List<(int, HandEnum, int)>>();
 
-            foreach (var animalInPlayersHand in player._curretHand.GetElementInHand)
+            foreach (var animalInPlayersHand in hand.GetElementInHand)
             {
-                if (changeValues.ContainsKey(animalInPlayersHand.Key))
+                GetPossibleExchanges(animalInPlayersHand.Key, animalInPlayersHand.Value,  deck ,temp);
+
+                //for (int i = 1; i < 10; i++)
+                //{
+                //    if (animalInPlayersHand.Value >= cost * i)
+                //    {
+                //        if (deck.CanBeSubstractedFromDeck(animalType, worth) == true)
+                //        {
+                //            if (!temp.ContainsKey(animalInPlayersHand.Key))
+                //            {
+                //                temp.Add(animalInPlayersHand.Key, new List<(int, HandEnum, int)>() { (cost, animalType, worth) });
+                //            }
+                //            else
+                //            {
+                //                temp[animalInPlayersHand.Key].Add((cost * i, animalType, worth * i));
+                //            }
+                //        }
+
+                //    }
+
+
+            }
+            return temp;
+        }
+
+        public Dictionary<HandEnum, List<(int, HandEnum, int)>> GetPossibleExchanges(HandEnum animalInPlayersHand, int animalInPlayersHandValue, CoinDeck deck, Dictionary<HandEnum, List<(int, HandEnum, int)>> dict)
+        {
+            if (changeValues.ContainsKey(animalInPlayersHand))
+            {
+                foreach (var (animalType, (cost, worth)) in changeValues[animalInPlayersHand])
                 {
-                    foreach (var (animalType, (cost, worth)) in changeValues[animalInPlayersHand.Key])
+
+                    if (animalInPlayersHandValue >= cost)
                     {
-
-                        if (animalInPlayersHand.Value >= cost)
+                        if (deck.CanBeSubstractedFromDeck(animalType, worth) == true)
                         {
-                            if (deck.CanBeSubstractedFromDeck(animalType, worth) == true)
+                            if (!dict.ContainsKey(animalInPlayersHand))
                             {
-                                if (!temp.ContainsKey(animalInPlayersHand.Key))
-                                {
-                                    temp.Add(animalInPlayersHand.Key, new List<(int, HandEnum, int)>() { (cost, animalType, worth) });
-                                }
-                                else
-                                {
-                                    temp[animalInPlayersHand.Key].Add((cost, animalType, worth));
-                                }
+                                dict.Add(animalInPlayersHand, new List<(int, HandEnum, int)>() { (cost, animalType, worth) });
                             }
-                            //for (int i = 1; i < 10; i++)
-                            //{
-                            //    if (animalInPlayersHand.Value >= cost * i)
-                            //    {
-                            //        if (deck.CanBeSubstractedFromDeck(animalType, worth) == true)
-                            //        {
-                            //            if (!temp.ContainsKey(animalInPlayersHand.Key))
-                            //            {
-                            //                temp.Add(animalInPlayersHand.Key, new List<(int, HandEnum, int)>() { (cost, animalType, worth) });
-                            //            }
-                            //            else
-                            //            {
-                            //                temp[animalInPlayersHand.Key].Add((cost * i, animalType, worth * i));
-                            //            }
-                            //        }
-
-                            //    }
+                            else
+                            {
+                                dict[animalInPlayersHand].Add((cost, animalType, worth));
+                            }
                         }
                     }
                 }
             }
-        
-            return temp;
+            return dict;
         }
+
     }
 }

@@ -7,8 +7,9 @@ namespace SuperFarmer.PlayArea
 {
     public interface IExchange
     {
-        public bool ExchangeAnimalCoins(int cost, HandEnum exchangFrom, int worth ,HandEnum exchangeTo, Player player, CoinDeck deck);
+        public bool ExchangeAnimalCoins(int cost, HandEnum exchangFrom, int worth ,HandEnum exchangeTo, IHand hand, CoinDeck deck);
 
-        public Dictionary<HandEnum, List<(int, HandEnum, int)>> GetPossibleExchanges(Player player, CoinDeck deck);
+        public Dictionary<HandEnum, List<(int, HandEnum, int)>> GetPossibleExchanges(IHand hand, CoinDeck deck);
+
     }
 }

@@ -4,6 +4,7 @@ using SuperFarmer.DataModell;
 
 namespace SuperFarmerTest
 {
+    [TestFixture]
     public class TestDices
     {
         private AnimalEnum[] _reddice = { AnimalEnum.SmallDog,

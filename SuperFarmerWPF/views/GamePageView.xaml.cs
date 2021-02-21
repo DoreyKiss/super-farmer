@@ -27,7 +27,7 @@ namespace SuperFarmer.WPF.views
         private  BlueDice blueDice;
         private  RedDice redDice;
         private readonly Dictionary<string, (int, HandEnum, int, HandEnum)> mapStringsToChanges= new Dictionary<string, (int, HandEnum, int, HandEnum)>();
-
+        private int changedTo = -1;
 
         public GamePageView(GameGod _gameGod) : this(_gameGod, new MainViewModel(), new RedDice(), new BlueDice())
         {
@@ -56,6 +56,7 @@ namespace SuperFarmer.WPF.views
         private void Change_PLayer_Click(object sender, RoutedEventArgs e)
         {
             gameViewModel.CurrentPlayerIndex = gameGod.ChangePLayer();
+            changedTo = -1;
             UpdatePlayerValues();
         }
 
@@ -87,8 +88,16 @@ namespace SuperFarmer.WPF.views
             }
             else
             {
+                if(changedTo != -1)
+                {
+                    if (gameGod.CurrentPossibleChanges != null)
+                    {
+                        gameViewModel.PossibleChanges = GetListOfChanges(gameGod.CurrentPossibleChanges);
+                    }
+                }
                 var (cost, changeFromAnimal, worth, changeToAnimal) = mapStringsToChanges[gameViewModel.SelectedChange];
                 gameGod.ChanegeCoins(cost, changeFromAnimal, worth, changeToAnimal);
+                changedTo = (int) changeToAnimal;
             }
 
             UpdatePlayerValues();
@@ -105,7 +114,6 @@ namespace SuperFarmer.WPF.views
             {
                 foreach (var (cost, animalType, worth) in a.Value)
                 {
-
                     var tempString = cost.ToString() + a.Key.ToString() + " --> " + worth.ToString() + " " + animalType;
                     tempList.Add(tempString);
                     mapStringsToChanges.Add(tempString, (cost, a.Key, worth, animalType));
