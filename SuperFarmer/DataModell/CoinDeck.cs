@@ -7,17 +7,20 @@ namespace SuperFarmer.DataModell
     public class CoinDeck
     {
         //todo
-        private Dictionary<HandEnum, int> Coins = new Dictionary<HandEnum, int>();
+        public Dictionary<HandEnum, int> Coins { get; private set; }
 
         public CoinDeck()
         {
-            Coins.Add(HandEnum.Bunny, 60);
-            Coins.Add(HandEnum.Sheep, 24);
-            Coins.Add(HandEnum.Pig, 20);
-            Coins.Add(HandEnum.Cow, 12);
-            Coins.Add(HandEnum.Horse, 6);
-            Coins.Add(HandEnum.SmallDog, 4);
-            Coins.Add(HandEnum.BigDog, 2);
+            Coins = new Dictionary<HandEnum, int>
+            {
+                { HandEnum.Bunny, 60 },
+                { HandEnum.Sheep, 24 },
+                { HandEnum.Pig, 20 },
+                { HandEnum.Cow, 12 },
+                { HandEnum.Horse, 6 },
+                { HandEnum.SmallDog, 4 },
+                { HandEnum.BigDog, 2 }
+            };
         }
 
         public bool CanBeSubstractedFromDeck(HandEnum key, int value)

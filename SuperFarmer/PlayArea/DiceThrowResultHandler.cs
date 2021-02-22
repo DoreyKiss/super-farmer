@@ -8,13 +8,13 @@ namespace SuperFarmer.PlayArea
     public class DiceThrowResultHandler
     {
         //todo when losing beacuse of fox or wolf shall we give stuff after losing stuff or before?
-        public IHand GetResult(IHand hand, AnimalEnum blue, AnimalEnum red, CoinDeck deck)
+        public void GetResult(IHand hand, AnimalEnum blue, AnimalEnum red, CoinDeck deck)
         {
             //wolf fox cow and horse can only occure once
             if (red == blue)
             {
                 AddAnimal(hand, red, deck, 2);
-                return hand;
+                return;
             }
 
             //If you roll a fox on one of the dice, you lose all the rabbits.
@@ -47,6 +47,7 @@ namespace SuperFarmer.PlayArea
             {
                 if (hand.BigDog != 0)
                 {
+                    //todo lose only one dog
                     deck.AddToDeck(HandEnum.BigDog, 1);
                     hand.LoseAnimal(HandEnum.BigDog, 1);
                 }
@@ -59,11 +60,9 @@ namespace SuperFarmer.PlayArea
             {
                 AddAnimal(hand, red, deck);
             }
-
-            return hand;
         }
 
-        private IHand AddAnimal(IHand hand, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
+        private void AddAnimal(IHand hand, AnimalEnum diceValue, CoinDeck deck , int numberOfoccurrences = 1)
         {
             var temp = hand.GetAnimal((HandEnum)diceValue);
             var (animal, number) = ((HandEnum)diceValue, (temp + numberOfoccurrences) / 2);
@@ -75,7 +74,6 @@ namespace SuperFarmer.PlayArea
                     hand.AddAnimal(animal, number);
                 }
             }
-            return hand;
         }
 
         private void WolfAttack(IHand hand, CoinDeck deck)
@@ -87,12 +85,11 @@ namespace SuperFarmer.PlayArea
             hand.LoseAnimalAll(HandEnum.Sheep);
 
             deck.AddToDeck(HandEnum.Pig, hand.Pig);
-            hand.LoseAnimalAll(HandEnum.Pig); ;
+            hand.LoseAnimalAll(HandEnum.Pig);
 
             deck.AddToDeck(HandEnum.Cow, hand.Cow);
             hand.LoseAnimalAll(HandEnum.Cow);
         }
     }
 }
-
 
