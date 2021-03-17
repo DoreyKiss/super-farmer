@@ -15,8 +15,7 @@ namespace SuperFarmer.DataModell
         public int SmallDog { get; private set; }
         public int BigDog { get; private set; }
 
-        //todo make sure it this  is a deepcopy
-        public Dictionary<HandEnum, int> GetElementInHand { get { return new Dictionary<HandEnum, int>(ElementsInHand); } }
+        public IReadOnlyDictionary<HandEnum, int> GetElementInHand => ElementsInHand;
 
         private readonly Dictionary<HandEnum, int> ElementsInHand= new Dictionary<HandEnum, int>();
 
