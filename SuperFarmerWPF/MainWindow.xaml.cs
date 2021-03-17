@@ -1,4 +1,5 @@
-﻿using SuperFarmerWPF.views;
+﻿using SuperFarmer.PlayArea;
+using SuperFarmer.WPF.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,26 +15,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SuperFarmerWPF
+namespace SuperFarmer.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
             Main.Content = new WellcomePageView();
         }
 
-        private void BtnClickStartGamePg(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new GamePageView();
-        }
+
         private void BtnClickWellcomePg(object sender, RoutedEventArgs e)
         {
             Main.Content = new WellcomePageView();
         }
+        
     }
 }

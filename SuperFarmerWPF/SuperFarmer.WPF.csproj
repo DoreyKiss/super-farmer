@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\BigDog.png" />
+    <None Remove="Resources\SmallDog.png" />
+    <None Remove="Resources\Usercontrolbackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperFarmer\SuperFarmer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\pictures\BigDog.png" />
+    <Resource Include="Resources\pictures\bunny.png" />
+    <Resource Include="Resources\pictures\cow.png" />
+    <Resource Include="Resources\pictures\GameBackGround.png" />
+    <Resource Include="Resources\pictures\sheep.png" />
+    <Resource Include="Resources\pictures\SmallDog.png" />
+    <Resource Include="Resources\pictures\Super-Farmer-BackGround.png" />
+    <Resource Include="Resources\pictures\horse.png" />
+    <Resource Include="Resources\pictures\left rules.png" />
+    <Resource Include="Resources\pictures\pig.png" />
+    <Resource Include="Resources\pictures\right rules.png" />
+    <Resource Include="Resources\pictures\Usercontrolbackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\StringResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\StringResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

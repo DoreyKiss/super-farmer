@@ -1,4 +1,4 @@
-﻿<Page x:Class="SuperFarmerWPF.views.WellcomePageView"
+﻿<Page x:Class="SuperFarmer.WPF.views.WellcomePageView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,32 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WellcomePage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\resources\ResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
     <Page.Background>
-        <ImageBrush ImageSource="..\resources\Super-Farmer-BackGround.png" Stretch="Fill" />
+        <ImageBrush ImageSource="..\resources\pictures\Super-Farmer-BackGround.png" Stretch="Fill" />
     </Page.Background>
+
+
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Padding="10" Width="150" Height="100"
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Margin="100,0,0,0" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource TexBlockStyle}" Text="Please select number of players" />
+            <ComboBox Style="{StaticResource ComboboxStyle}"
+                        SelectedItem="{Binding NumberOfPlayers}" ItemsSource="{Binding NumberOfPossiblePlayers}" >
+            </ComboBox>
+
+            <Button Style="{StaticResource ButtonStyle}"
                     HorizontalContentAlignment="Center"                            
-                    VerticalContentAlignment="Center" FontSize="25">Start Game</Button>
+                    VerticalContentAlignment="Center" FontSize="25"
+                    Click="BtnClickStartGame">Start Game</Button>
         </StackPanel>
-    </Grid>    
+    </Grid>
 </Page>
