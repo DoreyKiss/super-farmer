@@ -21,20 +21,12 @@ namespace SuperFarmer.DataModell
 
         public Hand()
         {
-            ElementsInHand.Add(HandEnum.Bunny, 0);
-            UpdateProp(HandEnum.Bunny);
-            ElementsInHand.Add(HandEnum.Sheep, 0);
-            UpdateProp(HandEnum.Sheep);
-            ElementsInHand.Add(HandEnum.Pig, 0);
-            UpdateProp(HandEnum.Pig);
-            ElementsInHand.Add(HandEnum.Cow, 0);
-            UpdateProp(HandEnum.Cow);
-            ElementsInHand.Add(HandEnum.Horse, 0);
-            UpdateProp(HandEnum.Horse);
-            ElementsInHand.Add(HandEnum.SmallDog, 0);
-            UpdateProp(HandEnum.SmallDog);
-            ElementsInHand.Add(HandEnum.BigDog, 0);
-            UpdateProp(HandEnum.BigDog);
+            using System.Linq;
+
+            foreach (var handEnum in Enum.GetValues(typeof(HandEnum)).Cast<HandEnum>())
+            {
+                AddAnimal(handEnum);
+            }
         }
 
         public void AddAnimal(HandEnum key, int value = 0)
